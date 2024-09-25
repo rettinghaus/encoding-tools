@@ -9,9 +9,9 @@
   <!-- DESCRIPTION                                                             -->
   <!-- ======================================================================= -->
 
-  <!-- This stylesheet adds/recalculates values for the attributes dur.ges, 
-  tstamp.ges, and tstamp based either on the value of the ppq attributes in the 
-  file or the value supplied in the ppqNew parameter. These attributes are useful 
+  <!-- This stylesheet adds/recalculates values for the attributes dur.ges,
+  tstamp.ges, and tstamp based either on the value of the ppq attributes in the
+  file or the value supplied in the ppqNew parameter. These attributes are useful
   in converting MEI to one-pass, MIDI-based representations. -->
 
   <!-- ======================================================================= -->
@@ -29,9 +29,9 @@
   <xsl:param name="ppqNew" select="960"/>
 
   <!-- PARAM: reQuantize
-      This parameter controls whether @dur.ges and @tstamp.ges values in the file are 
-      copied or discarded. A value of 'false' keeps existing @tstamp.ges and @dur.ges 
-      values, while any other value calculates new values using the value of the ppqNew 
+      This parameter controls whether @dur.ges and @tstamp.ges values in the file are
+      copied or discarded. A value of 'false' keeps existing @tstamp.ges and @dur.ges
+      values, while any other value calculates new values using the value of the ppqNew
       parameter.
   -->
   <xsl:param name="reQuantize" select="'false'"/>
@@ -516,7 +516,7 @@
                   </xsl:call-template>
                 </xsl:when>
                 <!-- no written duration; use measure duration based on ppq and meter -->
-                <!-- could use sum of gestural durations of events on other layer of 
+                <!-- could use sum of gestural durations of events on other layer of
                     this or some other staff, I suppose -->
                 <xsl:otherwise>
                   <xsl:value-of select="$measureDuration"/>

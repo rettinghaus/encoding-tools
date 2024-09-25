@@ -46,7 +46,7 @@
                      </staff>
                      <staff n="2">
                         <layer>
-            
+
                            <beam>
                               <chord dur="8">
                                  <note pname="c" oct="4"/>
@@ -103,7 +103,7 @@
                   <measure n="2">
                      <staff n="1">
                         <layer>
-            
+
                            <note dur="4" pname="g" oct="4">
                               <verse>
                                  <syl>Dans</syl>
@@ -291,7 +291,7 @@
                   <measure n="4">
                      <staff n="1">
                         <layer>
-            
+
                            <note dur="2" pname="c" oct="5">
                               <verse>
                                  <syl wordpos="m" con="d">ma</syl>

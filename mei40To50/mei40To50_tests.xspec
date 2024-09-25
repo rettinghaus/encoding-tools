@@ -4,7 +4,7 @@
                xmlns:mei="http://www.music-encoding.org/ns/mei"
                xmlns="http://www.music-encoding.org/ns/mei"
                stylesheet="mei40To50.xsl">
-    
+
     <x:scenario label="mei root element...">
         <x:scenario label="... without @meiversion attribute">
             <x:context>
@@ -14,7 +14,7 @@
                 <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="5.0"></mei>
             </x:expect>
         </x:scenario>
-        <x:scenario label="... with existing @meiversion attribute not equal to '5.0'"> 
+        <x:scenario label="... with existing @meiversion attribute not equal to '5.0'">
             <x:context>
                 <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="4.0.1"></mei>
             </x:context>
@@ -194,7 +194,7 @@
                 <x:expect label="it should not change multiRest element">
                         <multiRest></multiRest>
                 </x:expect>
-            </x:scenario> 
+            </x:scenario>
         </x:scenario>
         <x:scenario label="... when processing rest">
             <x:scenario label="with instr attribute">
@@ -549,7 +549,7 @@
             </x:scenario>
         </x:scenario>
     </x:scenario>
- 
+
     <x:scenario label="@line.form and @line.width replaced with @lform and @lwidth">
         <x:scenario label="... when processing arpeg">
             <x:scenario label="with @line.form attribute">

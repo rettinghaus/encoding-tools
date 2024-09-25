@@ -531,7 +531,7 @@
   </xsl:template>
 
   <xsl:template match="mei:physLoc/mei:repository" mode="copy">
-    <!-- New repository element will contain the textual content of the ancestor 
+    <!-- New repository element will contain the textual content of the ancestor
       physLoc as well as any textual and element content of repository -->
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="copy"/>

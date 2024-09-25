@@ -35,12 +35,12 @@
   -->
   <xsl:param name="formeWork" select="'strip'"/>
 
-  <!-- PARAM:keepAttributes 
+  <!-- PARAM:keepAttributes
       This parameter indicates whether redundant attributes for beams, tuplets and syls should be preserved.
   -->
   <xsl:param name="keepAttributes" select="'false'"/>
 
-  <!-- PARAM:generateMIDI 
+  <!-- PARAM:generateMIDI
       This parameter indicates whether MIDI-relevant data should be preserved.
   -->
   <xsl:param name="generateMIDI" select="'false'"/>
@@ -1872,7 +1872,7 @@
   </xsl:template>
 
   <xsl:template match="forward" mode="stage1">
-    <!-- Forward skips in time have to be filled with space in MEI when 
+    <!-- Forward skips in time have to be filled with space in MEI when
          they are followed by events; i.e., notes -->
     <xsl:if test="following-sibling::note">
       <xsl:variable name="thisPart">
@@ -1972,7 +1972,7 @@
           <xsl:call-template name="getTimestamp.ges"/>
         </xsl:attribute>
 
-        <!-- The duration of the space in musical terms isn't required for the conversion of 
+        <!-- The duration of the space in musical terms isn't required for the conversion of
           MusicXML to MEI, but it may be necessary for processing the MEI file. -->
         <xsl:variable name="dur">
           <xsl:call-template name="quantizedDuration">
@@ -3378,8 +3378,8 @@
                               <xsl:value-of select="generate-id()"/>
                             </xsl:attribute>
                             <xsl:attribute name="tstamp.ges">0</xsl:attribute>
-                            <!-- The duration of the space in musical terms isn't required 
-                              for the conversion of MusicXML to MEI, but it may be necessary 
+                            <!-- The duration of the space in musical terms isn't required
+                              for the conversion of MusicXML to MEI, but it may be necessary
                               for processing the MEI file. -->
                             <xsl:variable name="dur">
                               <xsl:call-template name="quantizedDuration">
@@ -4560,7 +4560,7 @@
           </xsl:if>
 
           <!-- Notehead shape -->
-          <!-- It's not usually necessary in CMN to be explicit about 
+          <!-- It's not usually necessary in CMN to be explicit about
           whether a notehead is filled or not since the shape ought to
           be filled if the duration is <= quarter and open otherwise. -->
           <xsl:choose>
@@ -5967,7 +5967,7 @@
         </xsl:call-template>
       </xsl:variable>
       <xsl:choose>
-        <!-- When slur crosses staves, ending note may actually precede starting note in 
+        <!-- When slur crosses staves, ending note may actually precede starting note in
           the encoded order of the file -->
         <xsl:when
           test="
@@ -8296,7 +8296,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
   <!-- Functions -->
   <!-- f:hex2integer provided by Thomas Weber -->
   <xsl:function name="f:hex2integer" as="xs:integer*">
-    <!-- Accepts hexstrings of arbitrary length as argument (only integer precision is the limit) 
+    <!-- Accepts hexstrings of arbitrary length as argument (only integer precision is the limit)
          Also can take a sequence of hex strings. Then will return a sequence of integers. -->
     <xsl:param name="hex" as="xs:string*"/>
     <xsl:for-each select="$hex">
@@ -8642,7 +8642,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
         local-name() = 'string' or local-name() = 'tap' or local-name() = 'thumb-position' or
         local-name() = 'scoop')]">
       <!-- String and fret indications are handled elsewhere as note attributes. Fingering,
-        pluck, hammer-on, pull-off and tap indications are treated elsewhere as directives. 
+        pluck, hammer-on, pull-off and tap indications are treated elsewhere as directives.
         The remaining elements above are not currently transcoded. -->
       <artic xmlns="http://www.music-encoding.org/ns/mei">
         <xsl:choose>
@@ -9941,7 +9941,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
   </xsl:template>
 
   <xsl:template name="resolveGrpSym">
-    <!-- Wrap staff definitions w/ staffGrp elements; called recursively as long as there 
+    <!-- Wrap staff definitions w/ staffGrp elements; called recursively as long as there
       are grpSym elements in the tree fragment passed to it -->
     <xsl:param name="in"/>
     <xsl:param name="maxLevel"/>

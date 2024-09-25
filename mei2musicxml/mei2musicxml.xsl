@@ -19,8 +19,8 @@
 
   <!-- PARAM:reQuantize
       This parameter controls whether @dur.ges values in the file are used or discarded.
-      A value of 'false()' uses @dur.ges values in the file, if they exist. A value of 
-      'true()' ignores any @dur.ges values in the file and calculates new values based 
+      A value of 'false()' uses @dur.ges values in the file, if they exist. A value of
+      'true()' ignores any @dur.ges values in the file and calculates new values based
       on the value of the ppqDefault parameter.
   -->
   <xsl:param name="reQuantize" select="false()"/>
@@ -1088,7 +1088,7 @@
         </xsl:choose>
       </xsl:variable>
 
-      <!-- defaultScoreDef contains the top-level score definition with new ppq values 
+      <!-- defaultScoreDef contains the top-level score definition with new ppq values
       (if requested). It will be used to resolve staves to parts when local modifications
       are encountered in measures other than the first. -->
       <xsl:variable name="defaultScoreDef">
@@ -1129,7 +1129,7 @@
         <xsl:if test="count(preceding::mei:measure[not(ancestor::mei:incip)])=0">
           <mei:initialAttributes/>
         </xsl:if>
-        <!-- copy any scoreDef or staffDef elements between this measure and the 
+        <!-- copy any scoreDef or staffDef elements between this measure and the
               previous one (with changes in ppq, if requested) -->
         <xsl:for-each
           select="preceding-sibling::mei:scoreDef[preceding-sibling::mei:measure[following-sibling::mei:measure[1][@xml:id=$thisMeasure]]]
@@ -1335,7 +1335,7 @@
       <!--<xsl:copy-of select="$measureContent5"/>-->
 
       <!-- Measure content pass 6: if there are any page or system breaks or score
-        definitions between this measure and the previous one, copy/resolve them 
+        definitions between this measure and the previous one, copy/resolve them
         into the appropriate part -->
       <xsl:variable name="measureContent6">
         <xsl:copy-of select="$measureContent5/comment()"/>
@@ -1708,7 +1708,7 @@
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:when>
-                <!-- if none of the conditions above is met, this is not the initial 
+                <!-- if none of the conditions above is met, this is not the initial
                     measure and $divisions will be empty. -->
               </xsl:choose>
             </xsl:variable>
@@ -2656,7 +2656,7 @@
               </attributes>
             </xsl:if>
 
-            <!-- copy events; replace comment elements with XML comments; 
+            <!-- copy events; replace comment elements with XML comments;
             eliminate beam elements, but keep their contents -->
             <events>
               <xsl:for-each select="events/*">
@@ -2690,7 +2690,7 @@
       <!--<xsl:copy-of select="$measureContent6"/>-->
 
       <!-- Measure content pass 7: integrate "measure-attached" controlevents;
-      that is, those with @tstamp.ges attribute (but not @startid or @plist), 
+      that is, those with @tstamp.ges attribute (but not @startid or @plist),
       into the sequence of events at the appropriate time -->
       <xsl:variable name="measureContent7">
         <xsl:copy-of select="$measureContent6/comment()"/>
@@ -2801,7 +2801,7 @@
                         </xsl:for-each>
                       </xsl:when>
                       <xsl:otherwise>
-                        <!-- control events with tstamp between tstamp of the previous event and this 
+                        <!-- control events with tstamp between tstamp of the previous event and this
                         event's time stamp -->
                         <!-- DEBUG: -->
                         <!--<xsl:comment>
@@ -3077,7 +3077,7 @@
         <xsl:value-of select="ancestor::mei:staff/@n"/>
       </xsl:attribute>
       <!-- staff assignment in MusicXML; that is, where the numbering of staves starts over
-        with each part. The event's @staff value takes precedence over the <staff> in which 
+        with each part. The event's @staff value takes precedence over the <staff> in which
         it occurred. -->
       <xsl:attribute name="partStaff">
         <xsl:variable name="thisStaff">
@@ -3152,7 +3152,7 @@
                 <xsl:otherwise>
                   <xsl:value-of select="$measureDuration"/>
                 </xsl:otherwise>
-                <!-- could use sum of gestural durations of events on other layer of 
+                <!-- could use sum of gestural durations of events on other layer of
                     this or some other staff -->
               </xsl:choose>
             </xsl:when>
@@ -3596,7 +3596,7 @@
   <xsl:template match="mei:staffGrp" mode="partList">
     <!-- The assignment of staffGrp and staffDef elements to MusicXML parts
       depends on the occurrence of instrDef or the use of @xml:id. When a staffGrp
-      has a single instrument definition or has an xml:id attribute, then it becomes 
+      has a single instrument definition or has an xml:id attribute, then it becomes
       a part. Otherwise, each staff definition is a part. -->
     <xsl:if test="exists(@*)">
       <part-group type="start">
@@ -4964,7 +4964,7 @@
         <xsl:value-of select="@xml:id"/>
       </xsl:variable>
 
-      <!-- The following variables, e.g., $accidentalMarks, $arpeggiation, etc., 
+      <!-- The following variables, e.g., $accidentalMarks, $arpeggiation, etc.,
       collect MusicXML elements. Later, if found not to be empty, their contents
       are copied to <notations> sub-elements. -->
 
@@ -5478,7 +5478,7 @@
         </xsl:for-each>
       </xsl:variable>
 
-      <!-- Dynamics and hammer-on and pull-off indications can potentially 
+      <!-- Dynamics and hammer-on and pull-off indications can potentially
           cross measure boundaries, so must be "passed through" for processing
           later -->
 
@@ -5682,7 +5682,7 @@
 
   <xsl:template match="controlevents" mode="stage2"/>
 
-  <!-- for now, ignore any controlevents (other than those currently dealt with) that happen to 
+  <!-- for now, ignore any controlevents (other than those currently dealt with) that happen to
     get into the stream of events -->
   <xsl:template match="mei:add | mei:anchoredText | mei:annot | mei:app | mei:arpeg |
     mei:beamSpan | mei:bend | mei:breath | mei:choice | mei:corr | mei:curve | mei:damage |

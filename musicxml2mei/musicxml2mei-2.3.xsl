@@ -1249,7 +1249,7 @@
   </xsl:template>
 
   <xsl:template match="forward" mode="stage1">
-    <!-- Forward skips in time have to be filled with space in MEI when 
+    <!-- Forward skips in time have to be filled with space in MEI when
          they are followed by events; i.e., notes -->
     <xsl:if test="following-sibling::note">
       <xsl:variable name="thisPart">
@@ -1333,7 +1333,7 @@
           <xsl:call-template name="getTimestamp.ges"/>
         </xsl:attribute>
 
-        <!-- The duration of the space in musical terms isn't required for the conversion of 
+        <!-- The duration of the space in musical terms isn't required for the conversion of
           MusicXML to MEI, but it may be necessary for processing the MEI file. -->
         <xsl:variable name="dur">
           <xsl:call-template name="quantizedDuration">
@@ -3712,7 +3712,7 @@
           </xsl:if>
 
           <!-- Notehead shape -->
-          <!-- It's not usually necessary in CMN to be explicit about 
+          <!-- It's not usually necessary in CMN to be explicit about
           whether a notehead is filled or not since the shape ought to
           be filled if the duration is <= quarter and open otherwise. -->
           <xsl:choose>
@@ -4027,7 +4027,7 @@
       <!-- Unfortunately, @startid isn't allowed on arpeg yet! -->
       <!--<xsl:variable name="startid">
         <xsl:value-of select="generate-id()"/>
-      </xsl:variable>      
+      </xsl:variable>
       <xsl:attribute name="startid">
         <xsl:value-of select="$startid"/>
       </xsl:attribute>-->
@@ -4077,7 +4077,7 @@
       <!-- Unfortunately, @startid isn't allowed on arpeg yet! -->
       <!--<xsl:variable name="startid">
         <xsl:value-of select="generate-id()"/>
-      </xsl:variable>      
+      </xsl:variable>
       <xsl:attribute name="startid">
         <xsl:value-of select="$startid"/>
       </xsl:attribute>-->
@@ -4750,7 +4750,7 @@
         </xsl:call-template>
       </xsl:variable>
       <xsl:choose>
-        <!-- When slur crosses staves, ending note may actually precede starting note in 
+        <!-- When slur crosses staves, ending note may actually precede starting note in
           the encoded order of the file -->
         <xsl:when test="preceding::note[notations/slur[@type='stop' and @number=$slurNum] and
           ancestor::part/@id=$partID and generate-id(ancestor::measure[1])=$startMeasureID]
@@ -5661,7 +5661,7 @@
           mode="grpSym"/>
       </staffGrp>
     </xsl:variable>
-    
+
     <xsl:choose>
       <xsl:when test="$outerStaffGrp//grpSym">
         <!-\- If there are stand-off grouping symbols, resolve them -\->
@@ -6501,7 +6501,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
   <!-- Functions -->
   <!-- f:hex2integer provided by Thomas Weber -->
   <xsl:function name="f:hex2integer" as="xs:integer*">
-    <!-- Accepts hexstrings of arbitrary length as argument (only integer precision is the limit) 
+    <!-- Accepts hexstrings of arbitrary length as argument (only integer precision is the limit)
          Also can take a sequence of hex strings. Then will return a sequence of integers. -->
     <xsl:param name="hex" as="xs:string*"/>
     <xsl:for-each select="$hex">
@@ -6608,7 +6608,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
             <xsl:text>acc</xsl:text>
           </xsl:when>
           <xsl:when test="local-name()='breath-mark' or local-name()='caesura'">
-            <!-- This is a no-op! In MEI, a breath mark or caesura is a directive, 
+            <!-- This is a no-op! In MEI, a breath mark or caesura is a directive,
                  not a note articulation and is processed along with other control
                  elements in the measure template. -->
           </xsl:when>
@@ -8047,7 +8047,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
   </xsl:template>
 
   <xsl:template name="resolveGrpSym">
-    <!-- Wrap staff definitions w/ staffGrp elements; called recursively as long as there 
+    <!-- Wrap staff definitions w/ staffGrp elements; called recursively as long as there
       are grpSym elements in the tree fragment passed to it -->
     <xsl:param name="in"/>
     <xsl:param name="maxLevel"/>

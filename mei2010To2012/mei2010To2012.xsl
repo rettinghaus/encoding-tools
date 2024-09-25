@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     version="2.0">
     <xsl:output indent="yes" encoding="UTF-8" method="xml" omit-xml-declaration="no"/>
     <xsl:param name="warning" select="true()"/>
-    
+
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>

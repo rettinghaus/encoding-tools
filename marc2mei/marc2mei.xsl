@@ -2640,7 +2640,7 @@
                 <xsl:apply-templates select="marc:datafield[@tag = '852']"/>
                 <xsl:apply-templates select="marc:datafield[@tag = '561']"/>
               </physLoc>
-        
+
               <!-- manifestation seriesStmt -->
               <xsl:apply-templates select="marc:datafield[@tag = '490']"/>
 

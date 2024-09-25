@@ -14,28 +14,28 @@
             <xd:p>This XSLT translates an MEI v4 file to an MEI v5 file.</xd:p>
         </xd:desc>
     </xd:doc>
-    
+
     <xsl:output method="xml" indent="yes" encoding="UTF-8" omit-xml-declaration="no" standalone="no"/>
     <xsl:strip-space elements="*"/>
-    
+
     <!-- ======================================================================= -->
     <!-- PARAMETERS                                                              -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Provides the location of the RNG schema.</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:param name="rng_model_path"/>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Provides the location of the Schematron schema.</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:param name="sch_model_path"/>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Controls the feedback provided by the stylesheet. The default value of 'true()'
@@ -43,11 +43,11 @@
         </xd:desc>
     </xd:doc>
     <xsl:param name="verbose" select="true()"/>
-    
+
     <!-- ======================================================================= -->
     <!-- GLOBAL VARIABLES                                                        -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>document URI</xd:p>
@@ -56,14 +56,14 @@
     <xsl:variable name="docURI">
         <xsl:value-of select="document-uri(/)"/>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>fallback model path</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:variable name="fallback_model_path">https://music-encoding.org/schema/5.0/mei-all.rng</xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>program name</xd:p>
@@ -72,7 +72,7 @@
     <xsl:variable name="progname">
         <xsl:text>mei40To50.xsl</xsl:text>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>program version</xd:p>
@@ -81,7 +81,7 @@
     <xsl:variable name="version">
         <xsl:text>1.0</xsl:text>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>program id</xd:p>
@@ -90,7 +90,7 @@
     <xsl:variable name="progid">
         <xsl:value-of select="'mei40To50.xsl'"/>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>program git url</xd:p>
@@ -99,7 +99,7 @@
     <xsl:variable name="gitUrl">
         <xsl:value-of select="'https://github.com/music-encoding/encoding-tools/blob/main/mei40To50/mei40To50.xsl'"/>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>new line</xd:p>
@@ -108,18 +108,18 @@
     <xsl:variable name="nl">
         <xsl:text>&#xa;</xsl:text>
     </xsl:variable>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>MEI version</xd:p>
         </xd:desc>
     </xd:doc>
     <xsl:variable name="meiversion" select="'5.0'"/>
-    
+
     <!-- ======================================================================= -->
     <!-- MAIN OUTPUT TEMPLATE                                                    -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Start template.</xd:p>
@@ -206,11 +206,11 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- ======================================================================= -->
     <!-- MATCH TEMPLATES FOR CHANGES BETWEEN MEI v4 and MEI v5                   -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>Insert @meiversion on root element if not present.</xd:desc>
     </xd:doc>
@@ -243,7 +243,7 @@
             <xsl:apply-templates select="node()"/>
         </identifier>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace pgHead2 for subsequent pages with pgHead/@func="all", assuming another pgHead will use @func="first".</xd:p>
@@ -257,7 +257,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </pgHead>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace pgHead with pgHead/@func="first", assuming another pgHead2 was there and is now encoded as pgHead with @func="all".</xd:p>
@@ -272,7 +272,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace pgFoot2 for subsequent pages with pgFoot/@func="all", assuming another pgFoot will use @func="first".</xd:p>
@@ -286,7 +286,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </pgFoot>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace pgFoot with pgFoot/@func="first", assuming another pgFoot2 was there and is now encoded as pgFoot with @func="all".</xd:p>
@@ -301,7 +301,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Remove @visible on mRest.</xd:p>
@@ -312,7 +312,7 @@
             <xsl:message select="'Dropping @visible on mRest ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Remove @instr on mRest.</xd:p>
@@ -323,7 +323,7 @@
             <xsl:message select="'Dropping @instr on mRest ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Remove @instr on mSpace.</xd:p>
@@ -334,7 +334,7 @@
             <xsl:message select="'Dropping @instr on mSpace ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Remove @instr on multiRest.</xd:p>
@@ -345,7 +345,7 @@
             <xsl:message select="'Dropping @instr on multiRest ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Remove @instr on rest.</xd:p>
@@ -356,7 +356,7 @@
             <xsl:message select="'Dropping @instr on rest ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace @key.sig with @keysig.</xd:p>
@@ -365,7 +365,7 @@
     <xsl:template match="@key.sig">
         <xsl:attribute name="keysig" select="."/>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace @keysig.show with @keysig.visible.</xd:p>
@@ -377,7 +377,7 @@
             <xsl:message select="'Changing @keysig.show to @keysig.visible on ' || local-name(parent::mei:*) || ' ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace @keysig.showchange with @keysig.cancelaccid.</xd:p>
@@ -401,7 +401,7 @@
             </xsl:message>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace @sig.showchange with @cancelaccid.</xd:p>
@@ -425,7 +425,7 @@
             </xsl:message>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>Resolve changes in @meter.form, moving @meter.form="invis" to @meter.visible="false".</xd:desc>
     </xd:doc>
@@ -442,7 +442,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>Resolve changes in meterSig/@form, moving @form="invis" to @visible="false".</xd:desc>
     </xd:doc>
@@ -483,7 +483,7 @@
             <xsl:message select="'Replacing @line.width with @lwidth on arpeg ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id || '.'"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Resolve @text.dist to @dir.dist.</xd:p>
@@ -495,7 +495,7 @@
             <xsl:message select="'Replacing @text.dist with @dir.dist on ' || local-name(parent::mei:*) || ' ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id || '. Alternatives could be @reh.dist or @tempo.dist.'"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Move letter-spacing and line-height on @rend to separate attributes.</xd:p>
@@ -518,12 +518,12 @@
             </xsl:if>
             <xsl:apply-templates select="node() | @* except @rend"/>
         </xsl:copy>
-        
+
         <xsl:if test="$verbose">
             <xsl:message select="'Separating letter-spacing and line-height into separate attributes on ' || local-name(parent::mei:*) || ' ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Move a non-numeric value on instrDef/@n to instrDef/@label.</xd:p>
@@ -559,7 +559,7 @@
             <xsl:message select="'Changing Bagpipe to Bag_pipe on @midi.instrname on ' || local-name(parent::mei:*) || ' ' || ancestor-or-self::mei:*[@xml:id][1]/@xml:id"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Replace a value of "dblwhole" on @head.mod with "fences".</xd:p>
@@ -575,11 +575,11 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <!-- ======================================================================= -->
     <!-- SELF-DOCUMENTATION TEMPLATES                                            -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Add a change element for the conversion.</xd:p>
@@ -591,7 +591,7 @@
             <xsl:call-template name="revisionDesc-insert-change"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>Add a record of the conversion to revisionDesc.</xd:desc>
     </xd:doc>
@@ -617,7 +617,7 @@
             <xsl:message select="'Added change element to the encoding.'"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>Insert mei:revisionDesc if not present.</xd:desc>
     </xd:doc>
@@ -630,7 +630,7 @@
             <xsl:message>Added revisionDesc to the encoding.</xsl:message>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Insert mei:application with info about the XSLT to an exisiting mei:appInfo.</xd:p>
@@ -642,17 +642,17 @@
             <xsl:call-template name="appInfo-insert-current-application"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Create mei:application element with info about this XSLT.</xd:p>
         </xd:desc>
-    </xd:doc>    
+    </xd:doc>
     <xsl:template name="appInfo-insert-current-application">
         <xsl:element name="application" namespace="http://www.music-encoding.org/ns/mei">
             <xsl:attribute name="version" select="'v' || replace($version, '&#32;', '_')"/>
             <xsl:attribute name="xml:id" select="$progid"/>
-            
+
             <xsl:element name="name" namespace="http://www.music-encoding.org/ns/mei"><xsl:value-of select="$progname"/></xsl:element>
             <xsl:element name="ptr" namespace="http://www.music-encoding.org/ns/mei">
                 <xsl:attribute name=" target" select="$gitUrl"/>
@@ -662,7 +662,7 @@
             <xsl:message select="'Added application element with documentation of this XSLT.'"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Create mei:appInfo element.</xd:p>
@@ -676,7 +676,7 @@
             <xsl:message select="'Added appInfo element to the encoding.'"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Copy mei:encodingDesc and, if not present, insert mei:appInfo as first child  with self-documentation.</xd:p>
@@ -691,7 +691,7 @@
             <xsl:apply-templates select="node() | @*"/>
         </xsl:copy>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Copy mei:fileDesc and, if not present, insert mei:encodingDesc/mei:appInfo after it with self-documentation.</xd:p>
@@ -710,7 +710,7 @@
             </xsl:if>
         </xsl:if>
     </xsl:template>
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Update @meiversion the new version of MEI.</xd:p>
@@ -722,12 +722,12 @@
             <xsl:message select="'Changing @meiversion on ' || local-name(parent::mei:*) || ' to ' || $meiversion"/>
         </xsl:if>
     </xsl:template>
-    
-    
+
+
     <!-- ======================================================================= -->
     <!-- COPY TEMPLATE                                                           -->
     <!-- ======================================================================= -->
-    
+
     <xd:doc>
         <xd:desc>
             <xd:p>Copy template.</xd:p>
@@ -738,6 +738,6 @@
             <xsl:apply-templates select="node() | @*" mode="#current"/>
         </xsl:copy>
     </xsl:template>
-    
-    
+
+
 </xsl:stylesheet>

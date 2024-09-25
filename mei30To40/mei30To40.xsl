@@ -1797,7 +1797,7 @@
   <!-- MATCH TEMPLATES FOR ATTRIBUTES                                          -->
   <!-- ======================================================================= -->
 
-  <!-- Replace deprecated "marc-stacc" and "ten-stacc" values with "marc" and "stacc" 
+  <!-- Replace deprecated "marc-stacc" and "ten-stacc" values with "marc" and "stacc"
     and "ten" and "stac" values, respectively -->
   <xsl:template match="@artic | @artic.ges" mode="#all">
     <xsl:attribute name="{local-name()}">

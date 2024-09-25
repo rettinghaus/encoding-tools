@@ -7,25 +7,25 @@
 
   NOTICE:   Copyright (c) 2010 by the Music Encoding Initiative (MEI)
             Council.
-  
+
             Licensed under the Educational Community License, Version
             2.0 (the "License"); you may not use this file except in
             compliance with the License. You may obtain a copy of the
             License at http://www.osedu.org/licenses/ECL-2.0.
-            
+
             Unless required by applicable law or agreed to in writing,
             software distributed under the License is distributed on
             an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
             KIND, either express or implied. See the License for the
             specific language governing permissions and limitations
             under the License.
-            
+
             This is a derivative work based on earlier versions of the
             schema copyright (c) 2001-2006 Perry Roland and the Rector
             and Visitors of the University of Virginia; licensed under
             the Educational Community License version 1.0.
-  
-  CONTACT:  contact@music-encoding.org 
+
+  CONTACT:  contact@music-encoding.org
 -->
 
 <!DOCTYPE xsl:stylesheet [
@@ -375,11 +375,11 @@
               <!-- Process score measures -->
               <!-- Measures are grouped based on criteria in the group-ending-with attribute -->
               <xsl:for-each-group select="measure"
-                group-ending-with="measure[part/barline/repeat[@direction='backward'] or 
-following-sibling::measure[1][part/barline[@location='left']/repeat[@direction='forward']] or 
-part/barline/ending[@type='stop'] or 
-part/barline[@location='right']/bar-style='light-light' or 
-following-sibling::measure[1][part/barline/ending[@type='start']] or 
+                group-ending-with="measure[part/barline/repeat[@direction='backward'] or
+following-sibling::measure[1][part/barline[@location='left']/repeat[@direction='forward']] or
+part/barline/ending[@type='stop'] or
+part/barline[@location='right']/bar-style='light-light' or
+following-sibling::measure[1][part/barline/ending[@type='start']] or
 following-sibling::measure[1][part/attributes[time or key]]
 ]">
 
@@ -2727,8 +2727,8 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
           </xsl:if>
           <xsl:choose>
             <xsl:when
-              test="words/@font-family or 
-                            words/@font-size or 
+              test="words/@font-family or
+                            words/@font-size or
                             words/@font-style='italic' or
                             words/@font-weight">
               <rend>
@@ -3768,7 +3768,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
   </xsl:template>
 
   <xsl:template match="forward" mode="stage1">
-    <!-- Forward skips in time have to be filled with space in MEI when 
+    <!-- Forward skips in time have to be filled with space in MEI when
          they are followed by events, i.e. notes -->
     <xsl:if test="following-sibling::note">
       <space>
@@ -5043,7 +5043,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
           /></xsl:attribute>
       </xsl:when>
       <xsl:when
-        test="rest and (preceding-sibling::*[beam][1]/beam='begin' or 
+        test="rest and (preceding-sibling::*[beam][1]/beam='begin' or
                       preceding-sibling::*[beam][1]/beam='continue') and
                       (following-sibling::*[beam][1]/beam='end' or following-sibling::*[beam][1]/beam='continue')">
         <!-- In MusicXML rests under a beam do not have a 'continue' beam element so this data has to be supplied. -->
@@ -6331,7 +6331,7 @@ following-sibling::measure[1][attributes[not(preceding-sibling::note)]] -->
 
     <xsl:variable name="dursum">
       <xsl:value-of
-        select="sum(preceding-sibling::note[not(chord)]/duration) + 
+        select="sum(preceding-sibling::note[not(chord)]/duration) +
 sum(preceding-sibling::forward/duration) - sum(preceding-sibling::backup/duration)"
       />
     </xsl:variable>
@@ -6499,7 +6499,7 @@ sum(preceding-sibling::forward/duration) - sum(preceding-sibling::backup/duratio
                             test="following::*[@instr=$thisinstr and ancestor::staff[@n=$thisstaff]]">
                             <xsl:variable name="layer">
                               <xsl:value-of
-                                select="following::*[@instr=$thisinstr and 
+                                select="following::*[@instr=$thisinstr and
                             ancestor::staff[@n=$thisstaff]][1]/ancestor::layer/@n"
                               />
                             </xsl:variable>
