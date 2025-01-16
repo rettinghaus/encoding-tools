@@ -266,7 +266,7 @@
 
       <xsl:element name="date">
 
-        <xsl:attribute name="isodate" select="format-dateTime(current-dateTime(), '[Y]-[M,2]-[D,2]T[H]:[m]:[s][Z]')"/>
+        <xsl:attribute name="isodate" select="format-date(current-date(), '[Y]-[M02]-[D02]')"/>
 
       </xsl:element>
 
